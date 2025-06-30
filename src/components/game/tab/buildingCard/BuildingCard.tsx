@@ -1,6 +1,7 @@
 import React from 'react';
 import IconButton from '../../../ui/iconButton/IconButton';
 import buildingIcon from '../../../../assets/svg/icons/building-icon.svg';
+import { useTranslation } from 'react-i18next';
 import './BuildingCard.css';
 
 interface BuildingCardProps {
@@ -16,6 +17,8 @@ const BuildingCard: React.FC<BuildingCardProps> = ({
   production, 
   onPurchase 
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="building-card">
       <div className="building-icon">
@@ -24,15 +27,15 @@ const BuildingCard: React.FC<BuildingCardProps> = ({
       
       <div className="building-info">
         <h3 className="building-name">{name}</h3>
-        <p className="building-price">Cost: {price} eggs</p>
-        <p className="building-production">Produces: {production}/s</p>
+        <p className="building-price">{t('cost', { price })}</p>
+        <p className="building-production">{t('produces', { production })}</p>
       </div>
       
       <IconButton 
         onClick={onPurchase}
         className="buy-button"
       >
-        Buy
+        {t('buy')}
       </IconButton>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import TabButton from '../../../ui/tabButton/TabButton';
+import { useTranslation } from 'react-i18next';
 import './GameTabs.css';
 
 interface GameTabsProps {
@@ -8,27 +9,29 @@ interface GameTabsProps {
 }
 
 const GameTabs: React.FC<GameTabsProps> = ({ activeTab, onTabChange }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="game-tabs-container">
       <TabButton 
         active={activeTab === 'buildings'}
         onClick={() => onTabChange('buildings')}
       >
-        Buildings
+        {t('buildings')}
       </TabButton>
       
       <TabButton 
         active={activeTab === 'upgrades'}
         onClick={() => onTabChange('upgrades')}
       >
-        Upgrades
+        {t('upgrades')}
       </TabButton>
       
       <TabButton 
         active={activeTab === 'shop'}
         onClick={() => onTabChange('shop')}
       >
-        Shop
+        {t('shop')}
       </TabButton>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './SPSDisplay.css';
 
 interface SPSDisplayProps {
@@ -6,9 +7,12 @@ interface SPSDisplayProps {
 }
 
 const SPSDisplay: React.FC<SPSDisplayProps> = ({ sps }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="sps-display">
-      {sps.toFixed(1)} eggs/second
+      {/* Передаем count как число */}
+      {t('eggsPerSecond', { count: sps })}
     </div>
   );
 };

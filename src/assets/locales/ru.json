@@ -1,0 +1,20 @@
+{
+  "gameMenu": "Игровое меню",
+  "statistics": "Статистика",
+  "settings": "Настройки",
+  "achievements": "Достижения",
+  "close": "Закрыть",
+  "buildings": "Здания",
+  "upgrades": "Улучшения",
+  "shop": "Магазин",
+  "comingSoon": "Скоро будет!",
+  "eggs": "Яиц",
+  "eggsPerSecond": "{{count}} яиц/секунду",
+  "cost": "Стоимость: {{price}} яиц",
+  "produces": "Производит: {{production}}/с",
+  "buy": "Купить",
+  "menu": "Меню",
+  "chickenCoop": "Курятник",
+  "eggFarm": "Яичная ферма",
+  "hatchery": "Инкубатор"
+}

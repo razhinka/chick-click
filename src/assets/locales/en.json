@@ -1,0 +1,20 @@
+{
+  "gameMenu": "Game Menu",
+  "statistics": "Statistics",
+  "settings": "Settings",
+  "achievements": "Achievements",
+  "close": "Close",
+  "buildings": "Buildings",
+  "upgrades": "Upgrades",
+  "shop": "Shop",
+  "comingSoon": "Coming soon!",
+  "eggs": "Eggs",
+  "eggsPerSecond": "{{count}} eggs/second",
+  "cost": "Cost: {{price}} eggs",
+  "produces": "Produces: {{production}}/s",
+  "buy": "Buy",
+  "menu": "Menu",
+  "chickenCoop": "Chicken Coop",
+  "eggFarm": "Egg Farm",
+  "hatchery": "Hatchery"
+}
