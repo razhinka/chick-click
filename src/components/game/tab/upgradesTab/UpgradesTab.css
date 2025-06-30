@@ -1,0 +1,15 @@
+.upgrades-tab {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.upgrades-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.upgrades-message {
+  color: #4b5563;
+}

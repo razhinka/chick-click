@@ -1,0 +1,22 @@
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animated-svg {
+  display: block;
+}
+
+.animated-svg.fadeIn {
+  animation: fadeIn 1s ease-in;
+}
+
+.animated-svg.bounce {
+  animation: bounce 1s infinite;
+}

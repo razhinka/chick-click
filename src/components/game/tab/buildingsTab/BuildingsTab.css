@@ -1,0 +1,7 @@
+.buildings-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* space-y-3 */
+  max-height: 24rem; /* max-h-96 */
+  overflow-y: auto;
+}

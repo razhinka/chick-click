@@ -1,0 +1,13 @@
+.chicken-container {
+  cursor: pointer;
+  transition: transform 200ms;
+}
+
+.chicken-container:hover {
+  transform: scale(1.05);
+}
+
+.chicken-svg {
+  width: 12rem;
+  height: 12rem;
+}

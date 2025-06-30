@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Градиенты -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6ab3f2" />
+      <stop offset="100%" stop-color="#a6d8ff" />
+    </linearGradient>
+    
+    <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffdb00" />
+      <stop offset="100%" stop-color="#ff7e00" />
+    </linearGradient>
+    
+    <linearGradient id="grassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7fbf4d" />
+      <stop offset="100%" stop-color="#5a8f29" />
+    </linearGradient>
+    
+    <linearGradient id="barnGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c1121f" />
+      <stop offset="100%" stop-color="#780000" />
+    </linearGradient>
+    
+    <linearGradient id="roofGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8d5d38" />
+      <stop offset="100%" stop-color="#5d2a00" />
+    </linearGradient>
+    
+    <linearGradient id="treeTrunkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b5a2b" />
+      <stop offset="100%" stop-color="#5d2a00" />
+    </linearGradient>
+    
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#fff9c4" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#fff9c4" stop-opacity="0" />
+    </radialGradient>
+    
+    <!-- Фильтры для теней -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+      <feOffset dx="4" dy="4" result="offsetblur"/>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="softGlow" height="300%" width="300%" x="-75%" y="-75%">
+      <feMorphology operator="dilate" radius="2" in="SourceAlpha" result="thicken" />
+      <feGaussianBlur in="thicken" stdDeviation="10" result="blurred" />
+      <feFlood flood-color="#ffd700" result="glowColor" />
+      <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow" />
+      <feMerge>
+        <feMergeNode in="softGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Небо -->
+  <rect width="800" height="400" fill="url(#skyGradient)"/>
+  
+  <!-- Солнце с ореолом -->
+  <circle cx="700" cy="100" r="70" fill="url(#sunGlow)" filter="url(#softGlow)"/>
+  <circle cx="700" cy="100" r="40" fill="url(#sunGradient)"/>
+  
+  <!-- Облака с тенями -->
+  <g class="cloud" filter="url(#dropShadow)">
+    <path d="M150,100 Q180,70 210,100 Q240,130 210,130 Q180,160 150,130 Q120,130 150,100 Z" fill="#ffffff"/>
+    <path d="M350,80 Q380,50 410,80 Q440,110 410,110 Q380,140 350,110 Q320,110 350,80 Z" fill="#ffffff"/>
+    <path d="M500,120 Q530,90 560,120 Q590,150 560,150 Q530,180 500,150 Q470,150 500,120 Z" fill="#ffffff"/>
+    <path d="M50,130 Q80,100 110,130 Q140,160 110,160 Q80,190 50,160 Q20,160 50,130 Z" fill="#ffffff"/>
+  </g>
+  
+  <!-- Горы на горизонте -->
+  <path d="M0,400 L100,350 L200,380 L300,320 L400,360 L500,300 L600,340 L700,310 L800,400 Z" fill="#5d8a66" opacity="0.7"/>
+  <path d="M0,400 L150,330 L250,360 L350,300 L450,340 L550,290 L650,320 L800,400 Z" fill="#4a6b55" opacity="0.8"/>
+  
+  <!-- Трава с градиентом -->
+  <rect y="400" width="800" height="200" fill="url(#grassGradient)"/>
+  
+  <!-- Детали травы -->
+  <g fill="#4a7d32" opacity="0.3">
+    <path d="M50,450 Q60,430 70,450 T90,450 T110,450 T130,450 T150,450 T170,450 T190,450 T210,450 T230,450 T250,450 T270,450 T290,450 T310,450 T330,450 T350,450 T370,450 T390,450 T410,450 T430,450 T450,450 T470,450 T490,450 T510,450 T530,450 T550,450 T570,450 T590,450 T610,450 T630,450 T650,450 T670,450 T690,450 T710,450 T730,450 T750,450 T770,450 T790,450" />
+    <path d="M30,500 Q40,480 50,500 T70,500 T90,500 T110,500 T130,500 T150,500 T170,500 T190,500 T210,500 T230,500 T250,500 T270,500 T290,500 T310,500 T330,500 T350,500 T370,500 T390,500 T410,500 T430,500 T450,500 T470,500 T490,500 T510,500 T530,500 T550,500 T570,500 T590,500 T610,500 T630,500 T650,500 T670,500 T690,500 T710,500 T730,500 T750,500 T770,500 T790,500" />
+  </g>
+  
+  <!-- Цветы на переднем плане -->
+  <g fill="#ff80ab" opacity="0.7">
+    <circle cx="50" cy="550" r="4" />
+    <circle cx="100" cy="530" r="3" />
+    <circle cx="150" cy="560" r="5" />
+    <circle cx="200" cy="540" r="4" />
+    <circle cx="250" cy="570" r="3" />
+    <circle cx="300" cy="550" r="5" />
+    <circle cx="350" cy="530" r="4" />
+    <circle cx="400" cy="560" r="3" />
+    <circle cx="450" cy="540" r="5" />
+    <circle cx="500" cy="570" r="4" />
+    <circle cx="550" cy="550" r="3" />
+    <circle cx="600" cy="530" r="5" />
+    <circle cx="650" cy="560" r="4" />
+    <circle cx="700" cy="540" r="3" />
+    <circle cx="750" cy="570" r="5" />
+  </g>
+  
+  <!-- Красный амбар с детализацией -->
+  <g filter="url(#dropShadow)">
+    <!-- Основное здание -->
+    <rect x="300" y="250" width="200" height="150" fill="url(#barnGradient)" stroke="#5a0000" stroke-width="2"/>
+    
+    <!-- Крыша -->
+    <polygon points="300,250 500,250 400,200" fill="url(#roofGradient)" stroke="#4a2c1d" stroke-width="2"/>
+    
+    <!-- Дверь -->
+    <rect x="370" y="300" width="60" height="100" fill="#8d5524" stroke="#5d2a00" stroke-width="2"/>
+    <circle cx="410" cy="350" r="3" fill="#c19a6b"/>
+    
+    <!-- Окна -->
+    <rect x="320" y="280" width="30" height="25" fill="#a3d9ff" stroke="#5a8cbb" stroke-width="1"/>
+    <rect x="450" y="280" width="30" height="25" fill="#a3d9ff" stroke="#5a8cbb" stroke-width="1"/>
+    
+    <!-- Детали двери -->
+    <rect x="380" y="320" width="40" height="5" fill="#5d2a00"/>
+    <rect x="380" y="340" width="40" height="5" fill="#5d2a00"/>
+    
+    <!-- Деревянные балки -->
+    <rect x="340" y="260" width="5" height="140" fill="#8d5524"/>
+    <rect x="380" y="260" width="5" height="140" fill="#8d5524"/>
+    <rect x="420" y="260" width="5" height="140" fill="#8d5524"/>
+    <rect x="460" y="260" width="5" height="140" fill="#8d5524"/>
+    
+    <!-- Соломенная крыша детали -->
+    <path d="M305,245 L315,240 L325,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M325,245 L335,240 L345,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M345,245 L355,240 L365,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M365,245 L375,240 L385,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M385,245 L395,240 L405,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M405,245 L415,240 L425,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M425,245 L435,240 L445,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M445,245 L455,240 L465,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M465,245 L475,240 L485,245" stroke="#d4b483" stroke-width="2"/>
+    <path d="M485,245 L495,240 L495,245" stroke="#d4b483" stroke-width="2"/>
+  </g>
+  
+  <!-- Деревья с тенями -->
+  <g filter="url(#dropShadow)">
+    <!-- Большое дерево слева -->
+    <rect x="100" y="350" width="20" height="50" fill="url(#treeTrunkGradient)"/>
+    <path d="M80,320 Q90,280 110,300 Q130,280 140,320 Q150,290 120,330 Q100,290 80,320 Z" fill="#2e7d32"/>
+    <path d="M70,340 Q90,300 110,320 Q130,300 140,340 Q150,310 120,350 Q100,310 70,340 Z" fill="#2e7d32"/>
+    <path d="M90,360 Q110,330 130,350 Q140,330 150,360 Q160,340 130,370 Q110,340 90,360 Z" fill="#2e7d32"/>
+    
+    <!-- Маленькое дерево справа -->
+    <rect x="600" y="370" width="15" height="30" fill="url(#treeTrunkGradient)"/>
+    <path d="M590,350 Q600,330 610,340 Q620,330 630,350 Q640,340 620,360 Q600,340 590,350 Z" fill="#388e3c"/>
+    <path d="M580,360 Q600,340 610,350 Q620,340 630,360 Q640,350 620,370 Q600,350 580,360 Z" fill="#388e3c"/>
+    
+    <!-- Кусты -->
+    <path d="M50,450 Q70,430 90,450 Q110,470 90,470 Q70,490 50,470 Q30,470 50,450 Z" fill="#4caf50"/>
+    <path d="M700,460 Q720,440 740,460 Q760,480 740,480 Q720,500 700,480 Q680,480 700,460 Z" fill="#4caf50"/>
+  </g>
+  
+  <!-- Забор -->
+  <g stroke="#8d5524" stroke-width="3">
+    <line x1="0" y1="420" x2="800" y2="420" />
+    <line x1="20" y1="400" x2="20" y2="420" />
+    <line x1="60" y1="400" x2="60" y2="420" />
+    <line x1="100" y1="400" x2="100" y2="420" />
+    <line x1="140" y1="400" x2="140" y2="420" />
+    <line x1="180" y1="400" x2="180" y2="420" />
+    <line x1="220" y1="400" x2="220" y2="420" />
+    <line x1="260" y1="400" x2="260" y2="420" />
+    <line x1="300" y1="400" x2="300" y2="420" />
+    <line x1="340" y1="400" x2="340" y2="420" />
+    <line x1="380" y1="400" x2="380" y2="420" />
+    <line x1="420" y1="400" x2="420" y2="420" />
+    <line x1="460" y1="400" x2="460" y2="420" />
+    <line x1="500" y1="400" x2="500" y2="420" />
+    <line x1="540" y1="400" x2="540" y2="420" />
+    <line x1="580" y1="400" x2="580" y2="420" />
+    <line x1="620" y1="400" x2="620" y2="420" />
+    <line x1="660" y1="400" x2="660" y2="420" />
+    <line x1="700" y1="400" x2="700" y2="420" />
+    <line x1="740" y1="400" x2="740" y2="420" />
+    <line x1="780" y1="400" x2="780" y2="420" />
+  </g>
+  
+  <!-- Куры на лужайке -->
+  <g transform="translate(200, 450)">
+    <ellipse cx="0" cy="0" rx="15" ry="10" fill="#ffd700"/>
+    <circle cx="10" cy="-10" r="8" fill="#ffd700"/>
+    <circle cx="12" cy="-12" r="2" fill="black"/>
+    <polygon points="-5,-5 0,0 5,-5" fill="#ff6347"/>
+  </g>
+  
+  <g transform="translate(500, 480)">
+    <ellipse cx="0" cy="0" rx="12" ry="8" fill="#ffd700"/>
+    <circle cx="8" cy="-8" r="6" fill="#ffd700"/>
+    <circle cx="10" cy="-10" r="1.5" fill="black"/>
+    <polygon points="-4,-4 0,0 4,-4" fill="#ff6347"/>
+  </g>
+</svg>

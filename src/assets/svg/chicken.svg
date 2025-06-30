@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Тело курицы -->
+  <ellipse cx="100" cy="120" rx="60" ry="50" fill="#FFD700"/>
+  
+  <!-- Голова -->
+  <circle cx="100" cy="70" r="30" fill="#FFD700"/>
+  
+  <!-- Глаз -->
+  <circle cx="110" cy="65" r="5" fill="black"/>
+  
+  <!-- Клюв -->
+  <polygon points="80,75 70,80 85,85" fill="#FF6347"/>
+  
+  <!-- Гребешок -->
+  <path d="M85,45 Q90,30 100,35 Q110,30 115,45" fill="red"/>
+  
+  <!-- Крыло -->
+  <ellipse cx="130" cy="120" rx="25" ry="15" fill="#FFA500" transform="rotate(-20 130 120)"/>
+  
+  <!-- Лапы -->
+  <path d="M90,170 L90,185 M90,185 L80,190" stroke="#FF6347" stroke-width="5"/>
+  <path d="M110,170 L110,185 M110,185 L120,190" stroke="#FF6347" stroke-width="5"/>
+</svg>
