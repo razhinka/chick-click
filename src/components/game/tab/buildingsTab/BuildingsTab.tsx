@@ -1,26 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import BuildingCard from '../buildingCard/BuildingCard';
-import { useTranslation } from 'react-i18next';
+import { 
+  selectAllBuildings
+} from '../../../../store/features/game/gameSelectors';
 import './BuildingsTab.css';
 
 const BuildingsTab: React.FC = () => {
-  const { t } = useTranslation();
-  
-  const buildings = [
-    { id: 1, name: t('chickenCoop'), basePrice: 50, production: 0.5 },
-    { id: 2, name: t('eggFarm'), basePrice: 200, production: 2 },
-    { id: 3, name: t('hatchery'), basePrice: 1000, production: 10 },
-  ];
+  const buildings = useSelector(selectAllBuildings);
 
   return (
     <div className="buildings-tab">
-      {buildings.map(building => (
+      {buildings.map((building, index) => (
         <BuildingCard 
           key={building.id}
-          name={building.name}
-          price={building.basePrice}
-          production={building.production}
-          onPurchase={() => console.log(`Buy ${building.name}`)}
+          building={building}
         />
       ))}
     </div>

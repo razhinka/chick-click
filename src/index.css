@@ -1,1 +1,39 @@
 
+/* Отключаем выделение текста при кликах */
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version */
+}
+
+/* Разрешаем выделение для интерактивных текстовых элементов */
+input, textarea, [contenteditable] {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Отключаем скроллинг для всего приложения */
+html, body {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Для корневого элемента */
+#root {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+/* Отключаем скроллбар для WebKit браузеров */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
+}

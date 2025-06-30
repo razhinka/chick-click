@@ -1,133 +1,88 @@
-import { createSlice, PayloadAction, createAsyncThunk, createSelector, createEntityAdapter, EntityId } from "@reduxjs/toolkit";
-import type { RootState } from '../../rootReduser';
+import { createSlice, PayloadAction, createEntityAdapter } from "@reduxjs/toolkit";
 
-// ���������������� ����������
+// Типы данных
 interface ScoreState {
-    value: number;
-    // ������ scorePerSecond - ����� ��������� �����������
+  value: number;
 }
 
 export interface Building {
-    id: EntityId;
-    name: string;
-    basePrice: number;
-    level: number; // ������������ lvl � level ��� ���������������
-    // ����� currentPrice - ����� ���������
-}
-
-export interface Upgrade {
-    id: EntityId;
-    name: string;
-    description: string;
-    basePrice: number;
-    purchased: boolean; // ������� ���� �������
-    // ����� currentPrice - ����� ���������
-}
-
-export interface SettingsState {
-    lang: string;
+  id: number;
+  name: string;
+  basePrice: number;
+  level: number;
+  production: number; // Добавили производство яиц в секунду
 }
 
 export interface GameState {
-    score: ScoreState;
-    buildings: ReturnType<typeof buildingsAdapter.getInitialState>;
-    upgrades: ReturnType<typeof upgradesAdapter.getInitialState>;
-    settings: SettingsState;
-    lastUpdate: number; 
+  score: ScoreState;
+  buildings: ReturnType<typeof buildingsAdapter.getInitialState>;
+  lastUpdate: number; 
 }
 
-export const buildingsAdapter = createEntityAdapter<Building>({
-    sortComparer: (a, b) => a.id.toString().localeCompare(b.id.toString()),
-});
+// Адаптер для зданий
+export const buildingsAdapter = createEntityAdapter<Building>();
 
-export const upgradesAdapter = createEntityAdapter<Upgrade>({
-    sortComparer: (a, b) => a.id.toString().localeCompare(b.id.toString()),
-});
-
+// Начальные данные зданий
 export const initialBuildingsData: Building[] = [
-    { id: 1, name: "курсор", basePrice: 15, level: 0 },
-    { id: 2, name: "омерика", basePrice: 100, level: 0 },
-    { id: 3, name: "сосать", basePrice: 500, level: 0 },
-]
-
-export const initialUpgradesData: Upgrade[] = [
-  { 
-    id: 1, 
-    name: "Усиленный толстый пенис", 
-    description: "Пенис становится толще в попе омериканца", 
-    basePrice: 100, 
-    purchased: false 
-  },
-  // ... другие улучшения
+  { id: 1, name: "Курятник", basePrice: 15, level: 0, production: 0.1 },
+  { id: 2, name: "Яичная ферма", basePrice: 100, level: 0, production: 1 },
+  { id: 3, name: "Инкубатор", basePrice: 500, level: 0, production: 5 },
 ];
 
+// Начальное состояние
 export const initialState: GameState = {
-    score: {
-        value: 0,
-    },
-    buildings: buildingsAdapter.addMany(
-        buildingsAdapter.getInitialState(),
-        initialBuildingsData
-    ),
-    upgrades: upgradesAdapter.addMany(
-        upgradesAdapter.getInitialState(),
-        initialUpgradesData,
-    ),
-    settings: {
-        lang: 'ru',
-    },
-    lastUpdate: Date.now(),
-}
+  score: {
+    value: 0,
+  },
+  buildings: buildingsAdapter.addMany(
+    buildingsAdapter.getInitialState(),
+    initialBuildingsData
+  ),
+  lastUpdate: Date.now(),
+};
 
+// Создаем срез
 export const gameSlice = createSlice({
-    name: 'game',
-    initialState,
-    reducers: {
-        incrementScore: (state, action: PayloadAction<number>) => {
-            state.score.value += action.payload;
-        },
-        purchaseBuilding: {
-            reducer(state, action: PayloadAction<{ id: EntityId; cost: number }>) {
-                const { id, cost } = action.payload;
-                if (state.score.value >= cost) {
-                    state.score.value -= cost;
-                    const building = state.buildings.entities[id];
-                    if (building) {
-                        buildingsAdapter.updateOne(state.buildings, {
-                            id,
-                            changes: { level: building.level + 1 },
-                        });
-                    }
-                }
-            },
-            prepare(id: EntityId, cost: number) {
-                return { payload: { id, cost } };
-            },
-        },
-        purchaseUpgrade: {
-            reducer(state, action: PayloadAction<{ id: EntityId; cost: number }>) {
-                const { id, cost } = action.payload;
-                if (state.score.value >= cost) {
-                    state.score.value -= cost;
-                    upgradesAdapter.updateOne(state.upgrades, {
-                        id,
-                        changes: { purchased: true },
-                    });
-                }
-            },
-            prepare(id: EntityId, cost: number) {
-                return { payload: { id, cost } };
-            },
-        },
-        updateLastTick: (state) => {
-            state.lastUpdate = Date.now();
-        },
+  name: 'game',
+  initialState,
+  reducers: {
+    // Увеличиваем счет
+    incrementScore: (state, action: PayloadAction<number>) => {
+      state.score.value += action.payload;
+    },
+    
+    // Покупка здания
+    purchaseBuilding: (state, action: PayloadAction<{ id: number; cost: number }>) => {
+      const { id, cost } = action.payload;
+      if (state.score.value >= cost) {
+        state.score.value -= cost;
+        const building = state.buildings.entities[id];
+        if (building) {
+          buildingsAdapter.updateOne(state.buildings, {
+            id,
+            changes: { level: building.level + 1 },
+          });
+        }
+      }
+    },
+    
+    // Обновление времени последнего тика
+    updateLastTick: (state) => {
+      state.lastUpdate = Date.now();
+    },
+    
+    // Сброс игры
+    resetGame: () => initialState,
+  }
+});
 
-        resetGame: () => initialState,
-    }
+// Экспортируем действия
+export const { 
+  incrementScore, 
+  purchaseBuilding, 
+  updateLastTick, 
+  resetGame 
+} = gameSlice.actions;
 
-})
-
-export const { incrementScore, purchaseBuilding, purchaseUpgrade, updateLastTick, resetGame } = gameSlice.actions;
-
+// Экспортируем редьюсер
 export default gameSlice.reducer;
